@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    ViewContext.ClientValidationEnabled = true;
+}
+@model GR.Web.Models.ContactViewModel.ContactViewModel
+<div class="row">
+    <div class="col-md-8">
+        @if (!(bool)ViewData["ContactSucess"])
+        {
+            <form class="form-horizontal" method="post" asp-action="Contact" asp-controller="Home">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label asp-for="FirstName" class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label asp-for="LastName" class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label asp-for="Email" class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Email" class="form-control" placeholder="E-Mail Address" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label asp-for="Phone" class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Phone" class="form-control" placeholder="+55 (00) 95555-1212" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label asp-for="Domain" class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Domain" class="form-control" placeholder="Website or domain name" />
+                        <span asp-validation-for="Domain" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- radio checks -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" asp-for="DoYouHaveHosting"></label>
+                    <div class="col-md-8">
+                        <div class="radio">
+                            <label>
+                                <input asp-for="DoYouHaveHosting" type="radio" value="yes" /> Yes
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input asp-for="DoYouHaveHosting" type="radio" value="no" /> No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text area -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" asp-for="Domain"></label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <textarea asp-for="ProjectDescription" class="form-control" placeholder="Project Description"></textarea>
+                        <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+            </form>
+        }
+        else
+        {
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+        }
+    </div>
+
+    <div class="col-md-4">
+        <address>
+            One Microsoft Way<br />
+            Redmond, WA 98052-6399<br />
+            <abbr title="Phone">P:</abbr>
+            425.555.0100
+        </address>
+
+        <address>
+            <strong>Support:</strong> <a href="mailto:renan.leite@globo.com">renan.leite@globo.com</a><br />
+            <strong>Marketing:</strong> <a href="mailto:renan.leite@globo.com">renan.leite@globo.com</a>
+        </address>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

@@ -1,0 +1,5 @@
+{
+  "directory": "wwwroot/lib",
+  "proxy": "http://proxydc.amil.com.br:3128",
+  "https-proxy": "http://proxydc.amil.com.br:3128"
+}
